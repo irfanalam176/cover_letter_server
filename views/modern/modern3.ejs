@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: #fefae0;
+      color: #2d2a24;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #fefcf3;
+      border-radius: 0;
+      box-shadow: 0 2px 20px rgba(0,0,0,.04);
+    }
+    .top-strip {
+      height: 6px;
+      background: #0d9488;
+      width: 100%;
+    }
+    .inner {
+      padding: 44px 56px 48px;
+    }
+    .header {
+      margin-bottom: 36px;
+    }
+    .header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0d9488;
+      letter-spacing: -.8px;
+      margin-bottom: 12px;
+    }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      font-size: 13px;
+      color: #6b7280;
+    }
+    .contact-row span {
+      position: relative;
+    }
+    .contact-row span:not(:last-child)::after {
+      content: '//';
+      color: #0d9488;
+      margin-left: 24px;
+      font-weight: 500;
+      opacity: .5;
+    }
+    .contact-row a {
+      color: #0d9488;
+      text-decoration: none;
+    }
+    .contact-row a:hover { text-decoration: underline; }
+    .social-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .social-links a {
+      font-size: 12px;
+      font-weight: 500;
+      color: #0d9488;
+      text-decoration: none;
+      padding: 2px 14px;
+      border: 1px solid #0d9488;
+      border-radius: 4px;
+      transition: all .2s;
+    }
+    .social-links a:hover {
+      background: #0d9488;
+      color: #fefcf3;
+    }
+    .date-dear {
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px dashed #d4d0c4;
+    }
+    .date-dear .date {
+      font-size: 13px;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+    .date-dear .dear {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2d2a24;
+    }
+    .body-text p {
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: #44403c;
+      margin-bottom: 14px;
+    }
+    .closing {
+      margin-top: 32px;
+    }
+    .closing .regards {
+      font-size: 14px;
+      color: #78716c;
+      margin-bottom: 2px;
+    }
+    .closing .name-outro {
+      font-size: 19px;
+      font-weight: 700;
+      color: #0d9488;
+    }
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; }
+      .inner { padding: 40px 48px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="top-strip"></div>
+    <div class="inner">
+      <div class="header">
+        <h1><%= coverLetter.name %></h1>
+        <div class="contact-row">
+          <span><%= coverLetter.address %></span>
+          <span><%= coverLetter.email %></span>
+          <span><%= coverLetter.phone %></span>
+          <% if (coverLetter.socialLinks) { %>
+            <span class="social-links"><%- coverLetter.socialLinks %></span>
+          <% } %>
+        </div>
+      </div>
+      <div class="date-dear">
+        <div class="date"><%= coverLetter.date %></div>
+        <div class="dear"><%= coverLetter.dear %></div>
+      </div>
+      <div class="body-text">
+        <% (coverLetter.textArea || '').split('\n').filter(p => p.trim()).forEach(function(p) { %>
+          <p><%= p %></p>
+        <% }) %>
+      </div>
+      <div class="closing">
+        <div class="regards">Sincerely,</div>
+        <div class="name-outro"><%= coverLetter.name %></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

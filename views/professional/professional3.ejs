@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      display: flex;
+      justify-content: center;
+      background: #f5f0eb;
+      font-family: 'Raleway', 'Helvetica Neue', sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.7;
+      color: #3a3a3a;
+      padding: 40px 20px;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #fefcfa;
+      padding: 55px 60px 50px;
+      box-shadow: 0 4px 25px rgba(92,26,42,0.08);
+      position: relative;
+      border: 1px solid #e8ddd8;
+    }
+    .page::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #5c1a2a, #8b3a4a, #5c1a2a);
+    }
+    .letterhead {
+      text-align: center;
+      padding-bottom: 26px;
+      border-bottom: none;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .letterhead::after {
+      content: '';
+      display: block;
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #5c1a2a, transparent);
+      margin: 20px auto 0;
+    }
+    .letterhead h1 {
+      font-family: 'Cardo', serif;
+      font-size: 26pt;
+      font-weight: 700;
+      color: #5c1a2a;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+    .letterhead .rule {
+      width: 40px;
+      height: 2px;
+      background: #5c1a2a;
+      margin: 10px auto;
+    }
+    .letterhead .tagline {
+      font-family: 'Cardo', serif;
+      font-style: italic;
+      font-size: 10pt;
+      color: #8b6f6a;
+      letter-spacing: 3px;
+    }
+    .contact-strip {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      font-size: 9pt;
+      color: #6a5a55;
+      font-weight: 300;
+    }
+    .contact-strip a {
+      color: #5c1a2a;
+      text-decoration: none;
+      font-weight: 400;
+    }
+    .date-line {
+      text-align: right;
+      margin-bottom: 22px;
+      font-size: 10pt;
+      color: #8b6f6a;
+      font-family: 'Cardo', serif;
+      font-style: italic;
+    }
+    .dear {
+      font-size: 11pt;
+      margin-bottom: 16px;
+      color: #5c1a2a;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .body-text p {
+      margin-bottom: 14px;
+      text-align: justify;
+      color: #4a3a38;
+    }
+    .body-text p:first-of-type::first-letter {
+      font-family: 'Cardo', serif;
+      font-size: 42pt;
+      font-weight: 700;
+      color: #5c1a2a;
+      float: left;
+      line-height: 0.85;
+      margin-right: 6px;
+      margin-top: 4px;
+    }
+    .signature-block {
+      margin-top: 34px;
+      padding-top: 20px;
+      border-top: 1px solid #e8ddd8;
+    }
+    .signature-name {
+      font-family: 'Cardo', serif;
+      font-size: 17pt;
+      font-weight: 700;
+      color: #5c1a2a;
+    }
+    .signature-title {
+      font-size: 9.5pt;
+      color: #8b6f6a;
+      font-weight: 300;
+      letter-spacing: 1.5px;
+      margin-top: 3px;
+    }
+    .social-links {
+      margin-top: 16px;
+      padding-top: 12px;
+      font-size: 9pt;
+      color: #8b6f6a;
+    }
+    .social-links a {
+      color: #5c1a2a;
+      text-decoration: none;
+      margin-right: 12px;
+    }
+    .seal {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      width: 50px;
+      height: 50px;
+      border: 2px solid #5c1a2a;
+      border-radius: 50%;
+      opacity: 0.12;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cardo', serif;
+      font-size: 18pt;
+      color: #5c1a2a;
+    }
+    @page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { max-width: 100%; box-shadow: none; padding: 40px 50px; border: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="seal">&#9733;</div>
+    <div class="letterhead">
+      <h1><%= coverLetter.name %></h1>
+      <div class="rule"></div>
+      <div class="tagline">Excellence in Leadership</div>
+      <div class="contact-strip">
+        <span><%= coverLetter.address %></span>
+        <span><%= coverLetter.email %></span>
+        <span><%= coverLetter.phone %></span>
+        <% if (coverLetter.socialLinks) { %>
+          <span><a href="<%= coverLetter.socialLinks %>">Portfolio</a></span>
+        <% } %>
+      </div>
+    </div>
+    <div class="date-line"><%= coverLetter.date %></div>
+    <div class="dear"><%= coverLetter.dear %></div>
+    <div class="body-text">
+      <% coverLetter.textArea.split('\n').filter(p => p.trim()).forEach(function(paragraph) { %>
+        <p><%= paragraph %></p>
+      <% }); %>
+    </div>
+    <div class="signature-block">
+      <div class="signature-name"><%= coverLetter.name %></div>
+      <div class="signature-title">Executive Leadership</div>
+    </div>
+    <% if (coverLetter.socialLinks) { %>
+      <div class="social-links">
+        <strong>Connect:</strong> <a href="<%= coverLetter.socialLinks %>"><%= coverLetter.socialLinks %></a>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>

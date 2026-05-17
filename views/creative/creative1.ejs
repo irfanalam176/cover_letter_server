@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fafafa;
+      color: #1a1a2e;
+      line-height: 1.7;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .letter-wrapper {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.04);
+      display: flex;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .sidebar {
+      width: 280px;
+      min-height: 100%;
+      background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+      color: #fff;
+      padding: 48px 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .sidebar::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(30%, 30%);
+    }
+    .monogram {
+      width: 72px;
+      height: 72px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+    .sidebar-section { margin-bottom: 32px; }
+    .sidebar-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.6;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .sidebar-value {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.6;
+      opacity: 0.92;
+    }
+    .sidebar-value a {
+      color: #fff;
+      text-decoration: none;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .sidebar-value a:hover { opacity: 1; text-decoration: underline; }
+    .sidebar-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      margin: 28px 0;
+    }
+    .social-links-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .social-links-sidebar a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .social-links-sidebar a:hover { color: #fff; }
+    .social-dot {
+      width: 6px;
+      height: 6px;
+      background: rgba(255,255,255,0.4);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .main-content {
+      flex: 1;
+      padding: 56px 52px;
+    }
+    .date-line {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+    .dear-line {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: #0d9488;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .main-content p {
+      margin-bottom: 18px;
+      font-size: 15px;
+      color: #334155;
+      font-weight: 300;
+    }
+    .signature-area {
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 2px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .signature-dot {
+      width: 10px;
+      height: 10px;
+      background: #f43f5e;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .signature-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: #1a1a2e;
+    }
+    .coral-accent {
+      position: relative;
+    }
+    .coral-accent::before {
+      content: '';
+      position: absolute;
+      left: -52px;
+      top: 50%;
+      width: 32px;
+      height: 3px;
+      background: #f43f5e;
+      transform: translateY(-50%);
+    }
+    @media (max-width: 768px) {
+      .letter-wrapper { flex-direction: column; }
+      .sidebar {
+        width: 100%;
+        min-height: auto;
+        padding: 32px 24px;
+      }
+      .main-content { padding: 36px 24px; }
+      .coral-accent::before { display: none; }
+    }
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { padding: 0; background: #fff; }
+      .letter-wrapper { box-shadow: none; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="letter-wrapper">
+    <div class="sidebar">
+      <div class="monogram"><%= (coverLetter.name || 'Y')[0] %></div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Name</div>
+        <div class="sidebar-value"><%= coverLetter.name %></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Address</div>
+        <div class="sidebar-value"><%= coverLetter.address %></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Email</div>
+        <div class="sidebar-value"><a href="mailto:<%= coverLetter.email %>"><%= coverLetter.email %></a></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Phone</div>
+        <div class="sidebar-value"><a href="tel:<%= coverLetter.phone %>"><%= coverLetter.phone %></a></div>
+      </div>
+      <% if (coverLetter.socialLinks && coverLetter.socialLinks.length) { %>
+        <div class="sidebar-divider"></div>
+        <div class="social-links-sidebar">
+          <div class="sidebar-label" style="margin-bottom:12px;">Connect</div>
+          <% coverLetter.socialLinks.forEach(function(link) { %>
+            <a href="<%= link.url %>" target="_blank">
+              <span class="social-dot"></span>
+              <%= link.label || link.url %>
+            </a>
+          <% }); %>
+        </div>
+      <% } %>
+    </div>
+    <div class="main-content">
+      <div class="date-line"><%= coverLetter.date %></div>
+      <div class="dear-line"><%= coverLetter.dear %></div>
+      <% var paragraphs = coverLetter.textArea.split('\n').filter(function(p) { return p.trim() !== ''; }); %>
+      <% paragraphs.forEach(function(p) { %>
+        <p><%= p %></p>
+      <% }); %>
+      <div class="signature-area">
+        <span class="signature-dot"></span>
+        <span class="signature-name"><%= coverLetter.name %></span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

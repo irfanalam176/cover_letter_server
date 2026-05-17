@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #fef2f2;
+      display: flex;
+      justify-content: center;
+      padding: 48px 24px;
+      font-family: 'Source Sans Pro', -apple-system, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.65;
+      color: #1e293b;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #fffcfc;
+      padding: 48px 60px 48px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      border: 1px solid #fecaca;
+    }
+
+    .top-ornament {
+      text-align: center;
+      font-size: 9pt;
+      color: #7f1d1d;
+      letter-spacing: 10px;
+      margin-bottom: 12px;
+      opacity: 0.6;
+    }
+
+    .top-border {
+      height: 2px;
+      background: linear-gradient(to right, transparent, #7f1d1d, transparent);
+      margin-bottom: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .name {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 22pt;
+      font-weight: 700;
+      color: #7f1d1d;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .contact-block {
+      font-size: 9pt;
+      color: #475569;
+      line-height: 2;
+    }
+
+    .contact-block span {
+      display: block;
+      letter-spacing: 0.04em;
+    }
+
+    .contact-block span:not(:last-child)::after {
+      content: '\00B7';
+      display: inline-block;
+      margin: 0 6px;
+      color: #7f1d1d;
+      opacity: 0.5;
+    }
+
+    .contact-divider {
+      width: 40px;
+      height: 2px;
+      background: #7f1d1d;
+      margin: 16px auto;
+      opacity: 0.4;
+    }
+
+    .date-line {
+      font-size: 10pt;
+      margin-bottom: 16px;
+      color: #475569;
+    }
+
+    .dear-line {
+      font-size: 10.5pt;
+      margin-bottom: 16px;
+      font-weight: 600;
+      font-family: 'Lora', Georgia, serif;
+      color: #7f1d1d;
+    }
+
+    .body-text p {
+      margin-bottom: 13px;
+      text-align: justify;
+    }
+
+    .closing {
+      margin-top: 28px;
+    }
+
+    .closing p {
+      margin-bottom: 3px;
+    }
+
+    .signature {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 14pt;
+      font-weight: 600;
+      font-style: italic;
+      color: #7f1d1d;
+      margin-top: 8px;
+      padding-top: 10px;
+      border-top: 1px solid #fecaca;
+    }
+
+    .social-links {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      font-size: 9pt;
+    }
+
+    .social-links a {
+      color: #7f1d1d;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; background: #fff; padding: 36px 52px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="top-ornament">&tilde; &tilde; &tilde;</div>
+    <div class="top-border"></div>
+
+    <div class="header">
+      <div class="name"><%= coverLetter.name %></div>
+      <div class="contact-block">
+        <span><%= coverLetter.address %></span>
+        <span><%= coverLetter.email %></span>
+        <span><%= coverLetter.phone %></span>
+        <% if (coverLetter.socialLinks) { %>
+          <span><%= coverLetter.socialLinks %></span>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="contact-divider"></div>
+
+    <div class="date-line"><%= coverLetter.date %></div>
+
+    <div class="dear-line">Dear <%= coverLetter.dear %>,</div>
+
+    <div class="body-text">
+      <% (coverLetter.textArea || '').split('\n').filter(p => p.trim()).forEach(function(paragraph) { %>
+        <p><%= paragraph %></p>
+      <% }); %>
+    </div>
+
+    <div class="closing">
+      <p>Sincerely,</p>
+      <div class="signature"><%= coverLetter.name %></div>
+    </div>
+  </div>
+</body>
+</html>

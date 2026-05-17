@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Cormorant+Infant:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Work Sans', sans-serif;
+      background: #0d1a1a;
+      color: #cbd5e1;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .letter-wrapper {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #112222;
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+    .letter-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 49.9%, rgba(20, 184, 166, 0.04) 50%, transparent 50.1%);
+      pointer-events: none;
+    }
+    .diagonal-split {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.08) 0%, transparent 100%);
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .left-panel {
+      width: 34%;
+      flex-shrink: 0;
+      padding: 48px 32px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .left-panel::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, rgba(20, 184, 166, 0.2), rgba(220, 38, 38, 0.2), transparent);
+    }
+    .left-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(203, 213, 225, 0.3);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .left-value {
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.75);
+      font-weight: 300;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .left-value a {
+      color: rgba(203, 213, 225, 0.75);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .left-value a:hover { color: #14b8a6; }
+    .left-monogram {
+      font-family: 'Cormorant Infant', serif;
+      font-size: 64px;
+      font-weight: 700;
+      color: rgba(20, 184, 166, 0.15);
+      line-height: 1;
+      margin-top: auto;
+    }
+    .left-social {
+      margin-top: 16px;
+    }
+    .left-social a {
+      display: block;
+      font-size: 12px;
+      color: rgba(203, 213, 225, 0.3);
+      text-decoration: none;
+      margin-bottom: 6px;
+      transition: color 0.2s;
+      letter-spacing: 0.3px;
+    }
+    .left-social a:hover { color: #dc2626; }
+    .right-panel {
+      flex: 1;
+      padding: 48px 48px 48px 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .right-panel .name-line {
+      font-family: 'Cormorant Infant', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+      line-height: 1.1;
+    }
+    .right-panel .role-line {
+      font-size: 12px;
+      color: rgba(203, 213, 225, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 400;
+      margin-bottom: 28px;
+    }
+    .right-panel .date-line {
+      font-size: 13px;
+      color: rgba(203, 213, 225, 0.35);
+      margin-bottom: 4px;
+    }
+    .right-panel .dear-line {
+      font-family: 'Cormorant Infant', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: #14b8a6;
+      margin-bottom: 20px;
+    }
+    .right-panel p {
+      margin-bottom: 16px;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(203, 213, 225, 0.7);
+    }
+    .right-panel p:first-of-type {
+      border-left: 2px solid #dc2626;
+      padding-left: 16px;
+    }
+    .signature-split {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .signature-split .sig-name {
+      font-family: 'Cormorant Infant', serif;
+      font-size: 24px;
+      color: #fff;
+    }
+    .signature-split .sig-line {
+      width: 50px;
+      height: 2px;
+      background: #dc2626;
+      margin-bottom: 8px;
+    }
+    @media (max-width: 768px) {
+      .letter-wrapper { flex-direction: column; }
+      .left-panel { width: 100%; padding: 32px 24px 16px; flex-direction: row; flex-wrap: wrap; gap: 8px 24px; }
+      .left-panel::after { display: none; }
+      .left-monogram { display: none; }
+      .right-panel { padding: 20px 24px 36px; }
+      .right-panel .name-line { font-size: 28px; }
+    }
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; }
+      .letter-wrapper { background: #fff; box-shadow: none; }
+      .left-panel .left-value { color: #444; }
+      .right-panel { color: #292524; }
+      .right-panel .name-line { color: #1c1917; }
+      .right-panel p { color: #444; }
+      .diagonal-split { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="letter-wrapper">
+    <div class="diagonal-split"></div>
+
+    <div class="left-panel">
+      <div>
+        <div class="left-label">Email</div>
+        <div class="left-value"><a href="mailto:<%= coverLetter.email %>"><%= coverLetter.email %></a></div>
+      </div>
+      <div>
+        <div class="left-label">Phone</div>
+        <div class="left-value"><a href="tel:<%= coverLetter.phone %>"><%= coverLetter.phone %></a></div>
+      </div>
+      <div>
+        <div class="left-label">Location</div>
+        <div class="left-value"><%= coverLetter.address %></div>
+      </div>
+      <% if (coverLetter.socialLinks && coverLetter.socialLinks.length) { %>
+        <div class="left-social">
+          <div class="left-label" style="margin-bottom:8px;">Online</div>
+          <% coverLetter.socialLinks.forEach(function(link) { %>
+            <a href="<%= link.url %>" target="_blank"><%= link.label || link.url %></a>
+          <% }); %>
+        </div>
+      <% } %>
+      <div class="left-monogram"><%= (coverLetter.name || 'Y')[0] %></div>
+    </div>
+
+    <div class="right-panel">
+      <div class="name-line"><%= coverLetter.name %></div>
+      <div class="role-line">Cover Letter</div>
+      <div class="date-line"><%= coverLetter.date %></div>
+      <div class="dear-line"><%= coverLetter.dear %></div>
+      <% var paragraphs = coverLetter.textArea.split('\n').filter(function(p) { return p.trim() !== ''; }); %>
+      <% paragraphs.forEach(function(p) { %>
+        <p><%= p %></p>
+      <% }); %>
+      <div class="signature-split">
+        <div class="sig-line"></div>
+        <div class="sig-name"><%= coverLetter.name %></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

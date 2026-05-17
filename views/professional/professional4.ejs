@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      display: flex;
+      justify-content: center;
+      background: #e8e3d7;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.7;
+      color: #2d3a3a;
+      padding: 40px 20px;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #faf8f4;
+      padding: 55px 60px 50px;
+      box-shadow: 0 4px 25px rgba(10,77,77,0.06);
+      position: relative;
+      border: 1px solid #d5d0c8;
+    }
+    .page::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 30px; bottom: 30px;
+      width: 4px;
+      background: linear-gradient(180deg, #0a4d4d, #1a7a7a, #0a4d4d);
+    }
+    .letterhead {
+      padding-left: 30px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid #d5d0c8;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    .letterhead h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 24pt;
+      font-weight: 700;
+      color: #0a4d4d;
+      letter-spacing: 1px;
+    }
+    .letterhead .sub {
+      font-size: 9pt;
+      color: #7a8a7a;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 300;
+      margin-top: 3px;
+    }
+    .contact-info {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      font-size: 9pt;
+      color: #5a6a5a;
+    }
+    .contact-info a {
+      color: #0a4d4d;
+      text-decoration: none;
+    }
+    .contact-info .sep {
+      color: #b5c0b5;
+    }
+    .date-line {
+      text-align: right;
+      margin-bottom: 22px;
+      font-size: 10pt;
+      color: #7a8a7a;
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      padding-right: 10px;
+    }
+    .dear {
+      font-size: 11pt;
+      margin-bottom: 16px;
+      color: #0a4d4d;
+      font-weight: 600;
+      padding-left: 30px;
+    }
+    .body-text {
+      padding-left: 30px;
+    }
+    .body-text p {
+      margin-bottom: 14px;
+      text-align: justify;
+      color: #3a4a4a;
+    }
+    .body-text p:first-of-type::first-letter {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 38pt;
+      font-weight: 700;
+      color: #0a4d4d;
+      float: left;
+      line-height: 0.88;
+      margin-right: 6px;
+      margin-top: 3px;
+    }
+    .signature-block {
+      margin-top: 34px;
+      padding-left: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #d5d0c8;
+    }
+    .signature-name {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 16pt;
+      font-weight: 700;
+      color: #0a4d4d;
+    }
+    .signature-title {
+      font-size: 9pt;
+      color: #7a8a7a;
+      font-weight: 300;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+    .signature-line {
+      width: 200px;
+      border-top: 2px solid #0a4d4d;
+      margin-bottom: 10px;
+    }
+    .social-links {
+      margin-top: 18px;
+      padding-left: 30px;
+      padding-top: 12px;
+      border-top: 1px solid #e5e0d8;
+      font-size: 9pt;
+      color: #7a8a7a;
+    }
+    .social-links a {
+      color: #0a4d4d;
+      text-decoration: none;
+      margin-right: 14px;
+    }
+    .footer-symbol {
+      position: absolute;
+      bottom: 25px;
+      right: 35px;
+      font-size: 8pt;
+      color: #d5d0c8;
+      letter-spacing: 4px;
+      font-weight: 300;
+    }
+    @page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { max-width: 100%; box-shadow: none; padding: 40px 50px; border: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="letterhead">
+      <h1><%= coverLetter.name %></h1>
+      <div class="sub">Executive Candidate &mdash; Senior Leadership</div>
+      <div class="contact-info">
+        <span><%= coverLetter.address %></span>
+        <span class="sep">|</span>
+        <span><%= coverLetter.email %></span>
+        <span class="sep">|</span>
+        <span><%= coverLetter.phone %></span>
+        <% if (coverLetter.socialLinks) { %>
+          <span class="sep">|</span>
+          <span><a href="<%= coverLetter.socialLinks %>"><%= coverLetter.socialLinks %></a></span>
+        <% } %>
+      </div>
+    </div>
+    <div class="date-line"><%= coverLetter.date %></div>
+    <div class="dear"><%= coverLetter.dear %></div>
+    <div class="body-text">
+      <% coverLetter.textArea.split('\n').filter(p => p.trim()).forEach(function(paragraph) { %>
+        <p><%= paragraph %></p>
+      <% }); %>
+    </div>
+    <div class="signature-block">
+      <div class="signature-line"></div>
+      <div class="signature-name"><%= coverLetter.name %></div>
+      <div class="signature-title">Executive Leadership</div>
+    </div>
+    <% if (coverLetter.socialLinks) { %>
+      <div class="social-links">
+        <strong>Digital Presence:</strong> <a href="<%= coverLetter.socialLinks %>"><%= coverLetter.socialLinks %></a>
+      </div>
+    <% } %>
+    <div class="footer-symbol">&#9670; &#9670; &#9670;</div>
+  </div>
+</body>
+</html>

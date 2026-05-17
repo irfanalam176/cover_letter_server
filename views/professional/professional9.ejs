@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      display: flex;
+      justify-content: center;
+      background: #e8e0d5;
+      font-family: 'Quattrocento Sans', 'Helvetica Neue', sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.7;
+      color: #3a3028;
+      padding: 40px 20px;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #fdfaf5;
+      padding: 50px 60px 50px;
+      box-shadow: 0 4px 25px rgba(107,66,38,0.06);
+      position: relative;
+      border: 1px solid #ddd0c5;
+    }
+    .top-ornament {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding-top: 8px;
+    }
+    .top-ornament span {
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: #6b4226;
+    }
+    .top-ornament i {
+      color: #6b4226;
+      font-size: 8pt;
+      margin-top: -5px;
+    }
+    .letterhead {
+      text-align: center;
+      padding: 28px 0 24px;
+      border-bottom: 1px solid #ddd0c5;
+      margin-bottom: 28px;
+      margin-top: 6px;
+    }
+    .letterhead h1 {
+      font-family: 'Quattrocento', serif;
+      font-size: 28pt;
+      font-weight: 700;
+      color: #6b4226;
+      letter-spacing: 2px;
+    }
+    .letterhead .rule-bronze {
+      width: 50px;
+      height: 2px;
+      background: #6b4226;
+      margin: 10px auto;
+    }
+    .letterhead .tag {
+      font-size: 9.5pt;
+      color: #8a7a6a;
+      letter-spacing: 3px;
+      font-style: italic;
+    }
+    .contact-strip {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      font-size: 9pt;
+      color: #7a6a5a;
+    }
+    .contact-strip a {
+      color: #6b4226;
+      text-decoration: none;
+    }
+    .contact-strip .sep {
+      color: #c5b5a5;
+    }
+    .date-line {
+      text-align: right;
+      margin-bottom: 22px;
+      font-size: 10pt;
+      color: #8a7a6a;
+      font-family: 'Quattrocento', serif;
+      font-style: italic;
+    }
+    .dear {
+      font-size: 11pt;
+      margin-bottom: 16px;
+      color: #6b4226;
+      font-weight: 700;
+    }
+    .body-text p {
+      margin-bottom: 14px;
+      text-align: justify;
+      color: #4a3a30;
+    }
+    .body-text p:first-of-type::first-letter {
+      font-family: 'Quattrocento', serif;
+      font-size: 38pt;
+      font-weight: 700;
+      color: #6b4226;
+      float: left;
+      line-height: 0.88;
+      margin-right: 6px;
+      margin-top: 3px;
+    }
+    .signature-block {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid #ddd0c5;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .signature-line {
+      width: 180px;
+      border-top: 2px solid #6b4226;
+    }
+    .signature-detail {
+      flex: 1;
+    }
+    .signature-name {
+      font-family: 'Quattrocento', serif;
+      font-size: 17pt;
+      font-weight: 700;
+      color: #6b4226;
+    }
+    .signature-title {
+      font-size: 9.5pt;
+      color: #8a7a6a;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+    .social-links {
+      margin-top: 20px;
+      padding-top: 12px;
+      border-top: 1px solid #e8ddd5;
+      font-size: 9pt;
+      color: #8a7a6a;
+    }
+    .social-links a {
+      color: #6b4226;
+      text-decoration: none;
+      margin-right: 14px;
+    }
+    .footer-accent {
+      text-align: center;
+      margin-top: 26px;
+      font-size: 7.5pt;
+      color: #c5b5a5;
+      letter-spacing: 6px;
+      font-weight: 700;
+    }
+    @page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { max-width: 100%; box-shadow: none; border: none; padding: 40px 50px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="top-ornament">
+      <span></span><i>&#10022;</i><span></span>
+    </div>
+    <div class="letterhead">
+      <h1><%= coverLetter.name %></h1>
+      <div class="rule-bronze"></div>
+      <div class="tag">Executive Leadership &bull; Distinguished Career</div>
+      <div class="contact-strip">
+        <span><%= coverLetter.address %></span>
+        <span class="sep">|</span>
+        <span><%= coverLetter.email %></span>
+        <span class="sep">|</span>
+        <span><%= coverLetter.phone %></span>
+        <% if (coverLetter.socialLinks) { %>
+          <span class="sep">|</span>
+          <span><a href="<%= coverLetter.socialLinks %>"><%= coverLetter.socialLinks %></a></span>
+        <% } %>
+      </div>
+    </div>
+    <div class="date-line"><%= coverLetter.date %></div>
+    <div class="dear"><%= coverLetter.dear %></div>
+    <div class="body-text">
+      <% coverLetter.textArea.split('\n').filter(p => p.trim()).forEach(function(paragraph) { %>
+        <p><%= paragraph %></p>
+      <% }); %>
+    </div>
+    <div class="signature-block">
+      <div class="signature-line"></div>
+      <div class="signature-detail">
+        <div class="signature-name"><%= coverLetter.name %></div>
+        <div class="signature-title">Executive Leadership</div>
+      </div>
+    </div>
+    <% if (coverLetter.socialLinks) { %>
+      <div class="social-links">
+        <strong>Connect:</strong> <a href="<%= coverLetter.socialLinks %>"><%= coverLetter.socialLinks %></a>
+      </div>
+    <% } %>
+    <div class="footer-accent">&#9670; Established &#9670; Respected &#9670; Trusted &#9670;</div>
+  </div>
+</body>
+</html>

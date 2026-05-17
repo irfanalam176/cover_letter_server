@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { display: flex; justify-content: center; background: #faf7f4; font-family: 'Raleway', sans-serif; font-weight: 400; color: #222; line-height: 1.65; padding: 40px 20px; }
+    .page { width: 210mm; min-height: 297mm; margin: 0 auto; background: #fffdfb; box-shadow: 0 4px 24px rgba(0,0,0,0.1); padding: 50px 55px; position: relative; border: 1px solid #f0e6dc; }
+    .top-band { position: absolute; top: 0; left: 0; right: 0; height: 60px; background: linear-gradient(135deg, #c62828 0%, #e57373 100%); }
+    .top-band::after { content: ''; position: absolute; bottom: -12px; left: 40px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 12px solid #e57373; }
+    .header { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 30px; padding: 20px 0 25px; }
+    .header-left { flex: 1; }
+    .header-left h1 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 28px; color: #c62828; }
+    .header-left .subhead { font-size: 11px; text-transform: uppercase; letter-spacing: 4px; color: #a8846a; font-weight: 600; margin-top: 3px; }
+    .header-right { text-align: right; font-size: 13px; color: #444; }
+    .header-right p { margin-bottom: 4px; }
+    .header-right .label { font-weight: 700; color: #c62828; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; display: block; }
+    .header-right a { color: #444; text-decoration: none; }
+    .header-right a:hover { color: #c62828; }
+    .divider { height: 1px; background: #e6d5c8; margin: 5px 0; }
+    .social-links { margin-top: 6px; font-size: 12px; }
+    .social-links a { color: #c62828; text-decoration: none; display: inline-block; margin: 1px 0; font-size: 11px; }
+    .social-links a:hover { text-decoration: underline; }
+    .ornament { text-align: center; color: #c62828; font-size: 16px; letter-spacing: 6px; margin: 5px 0 20px; opacity: 0.5; }
+    .date-line { text-align: left; margin: 10px 0 20px; font-size: 14px; color: #666; }
+    .dear { font-size: 15px; margin-bottom: 20px; padding-left: 2px; border-left: 3px solid #c62828; padding-left: 12px; }
+    .content p { margin-bottom: 14px; text-align: justify; font-size: 13.5px; }
+    .signature { margin-top: 40px; padding: 25px 0 0; text-align: right; }
+    .signature p { font-size: 13px; margin-bottom: 3px; color: #555; }
+    .signature .name { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 18px; color: #c62828; }
+    .signature .title { font-size: 12px; color: #888; }
+    .sig-line { width: 200px; height: 1px; background: #c62828; margin: 8px 0 8px auto; }
+    @page { size: A4; margin: 12mm; }
+    @media print { body { background: #fff; padding: 0; } .page { max-width: 100%; box-shadow: none; padding: 20px 30px; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="top-band"></div>
+
+    <div class="header">
+      <div class="header-left">
+        <h1><%= coverLetter.name %></h1>
+        <div class="subhead">Lettera di Presentazione</div>
+      </div>
+      <div class="header-right">
+        <p><span class="label">Indirizzo</span><%= coverLetter.address %></p>
+        <div class="divider"></div>
+        <p><span class="label">Email</span><a href="mailto:<%= coverLetter.email %>"><%= coverLetter.email %></a></p>
+        <div class="divider"></div>
+        <p><span class="label">Telefono</span><%= coverLetter.phone %></p>
+        <% if (coverLetter.socialLinks && coverLetter.socialLinks.length) { %>
+          <div class="social-links">
+            <span class="label">Profili</span>
+            <% coverLetter.socialLinks.forEach(function(link) { %>
+              <a href="<%= link %>" target="_blank"><%= link %></a>
+            <% }); %>
+          </div>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="ornament">~ ~ ~</div>
+
+    <div class="date-line"><%= coverLetter.date %></div>
+
+    <div class="dear"><%= coverLetter.dear %>,</div>
+
+    <div class="content">
+      <% var paragraphs = coverLetter.textArea.split('\n').filter(function(p) { return p.trim() !== ''; }); %>
+      <% paragraphs.forEach(function(p) { %>
+        <p><%= p %></p>
+      <% }); %>
+    </div>
+
+    <div class="signature">
+      <div class="sig-line"></div>
+      <p>Cordiali saluti,</p>
+      <div class="name"><%= coverLetter.name %></div>
+      <div class="title">Candidato</div>
+    </div>
+  </div>
+</body>
+</html>

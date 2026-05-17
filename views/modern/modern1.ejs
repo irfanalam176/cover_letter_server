@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.06);
+      overflow: hidden;
+      display: flex;
+    }
+    .accent-bar {
+      width: 10px;
+      background: #4f46e5;
+      flex-shrink: 0;
+    }
+    .content {
+      padding: 48px 52px;
+      flex: 1;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+    }
+    .name-title h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #4f46e5;
+      letter-spacing: -.5px;
+      margin-bottom: 2px;
+    }
+    .name-title .sub {
+      font-size: 13px;
+      font-weight: 500;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .contact {
+      text-align: right;
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.8;
+    }
+    .contact a {
+      color: #4f46e5;
+      text-decoration: none;
+    }
+    .contact a:hover { text-decoration: underline; }
+    .social-links {
+      margin-top: 6px;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    .social-links a {
+      font-size: 12px;
+      font-weight: 500;
+      color: #4f46e5;
+      text-decoration: none;
+      padding: 2px 10px;
+      border: 1px solid #4f46e5;
+      border-radius: 20px;
+      transition: all .2s;
+    }
+    .social-links a:hover {
+      background: #4f46e5;
+      color: #fff;
+    }
+    .date-dear {
+      margin-bottom: 24px;
+    }
+    .date-dear .date {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+    .date-dear .dear {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1e293b;
+    }
+    .body-text p {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: #334155;
+      margin-bottom: 14px;
+    }
+    .closing {
+      margin-top: 32px;
+    }
+    .closing .regards {
+      font-size: 14.5px;
+      color: #334155;
+      margin-bottom: 4px;
+    }
+    .closing .name-outro {
+      font-size: 18px;
+      font-weight: 700;
+      color: #4f46e5;
+    }
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="accent-bar"></div>
+    <div class="content">
+      <div class="header">
+        <div class="name-title">
+          <h1><%= coverLetter.name %></h1>
+          <div class="sub">Professional</div>
+        </div>
+        <div class="contact">
+          <div><%= coverLetter.address %></div>
+          <div><%= coverLetter.email %></div>
+          <div><%= coverLetter.phone %></div>
+          <% if (coverLetter.socialLinks) { %>
+            <div class="social-links">
+              <%- coverLetter.socialLinks %>
+            </div>
+          <% } %>
+        </div>
+      </div>
+      <div class="date-dear">
+        <div class="date"><%= coverLetter.date %></div>
+        <div class="dear"><%= coverLetter.dear %></div>
+      </div>
+      <div class="body-text">
+        <% (coverLetter.textArea || '').split('\n').filter(p => p.trim()).forEach(function(p) { %>
+          <p><%= p %></p>
+        <% }) %>
+      </div>
+      <div class="closing">
+        <div class="regards">Sincerely,</div>
+        <div class="name-outro"><%= coverLetter.name %></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

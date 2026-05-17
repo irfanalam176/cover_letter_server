@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: #fdfbf7;
+      color: #292524;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .letter-wrapper {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #fff;
+      padding: 60px 64px;
+      position: relative;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.04);
+    }
+    .frame-outer {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px solid #e11d48;
+      pointer-events: none;
+    }
+    .frame-inner {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      border: 1px solid rgba(5, 150, 105, 0.3);
+      pointer-events: none;
+    }
+    .corner {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-color: #059669;
+      border-style: solid;
+    }
+    .corner-tl { top: 12px; left: 12px; border-width: 2px 0 0 2px; }
+    .corner-tr { top: 12px; right: 12px; border-width: 2px 2px 0 0; }
+    .corner-bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; }
+    .corner-br { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; }
+    .header-section {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .header-section::after {
+      content: '✦';
+      display: block;
+      color: #059669;
+      font-size: 14px;
+      margin-top: 16px;
+      letter-spacing: 8px;
+    }
+    .header-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 600;
+      color: #1c1917;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .header-contact {
+      font-size: 13px;
+      color: #78716c;
+      margin-top: 10px;
+      letter-spacing: 1px;
+      font-weight: 300;
+    }
+    .header-contact a {
+      color: #78716c;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .header-contact a:hover { color: #e11d48; }
+    .header-contact span { margin: 0 8px; color: #d6d3d1; }
+    .date-line {
+      text-align: right;
+      font-size: 14px;
+      color: #78716c;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .dear-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-style: italic;
+      color: #059669;
+      margin-bottom: 20px;
+    }
+    .body-content p {
+      margin-bottom: 18px;
+      font-size: 15px;
+      color: #44403c;
+      font-weight: 300;
+      line-height: 1.8;
+      text-align: justify;
+    }
+    .body-content p:first-of-type {
+      text-indent: 32px;
+    }
+    .body-content p:first-of-type::first-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 700;
+      color: #e11d48;
+      float: left;
+      line-height: 0.85;
+      margin-right: 10px;
+      margin-top: 6px;
+    }
+    .social-block {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid #e7e5e4;
+    }
+    .social-block a {
+      display: inline-block;
+      color: #78716c;
+      text-decoration: none;
+      font-size: 13px;
+      margin: 0 12px;
+      padding: 6px 18px;
+      border: 1px solid #e7e5e4;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      transition: all 0.25s;
+    }
+    .social-block a:hover {
+      border-color: #059669;
+      color: #059669;
+    }
+    .signature {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .signature-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: #292524;
+      letter-spacing: 1px;
+    }
+    .signature-rule {
+      width: 60px;
+      height: 1px;
+      background: #e11d48;
+      margin: 10px auto 8px;
+    }
+    @media (max-width: 768px) {
+      .letter-wrapper { padding: 36px 28px; }
+      .frame-outer, .frame-inner, .corner { display: none; }
+      .header-name { font-size: 30px; }
+    }
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { padding: 0; background: #fff; }
+      .letter-wrapper { box-shadow: none; padding: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="letter-wrapper">
+    <div class="frame-outer"></div>
+    <div class="frame-inner"></div>
+    <span class="corner corner-tl"></span>
+    <span class="corner corner-tr"></span>
+    <span class="corner corner-bl"></span>
+    <span class="corner corner-br"></span>
+
+    <div class="header-section">
+      <div class="header-name"><%= coverLetter.name %></div>
+      <div class="header-contact">
+        <a href="mailto:<%= coverLetter.email %>"><%= coverLetter.email %></a>
+        <span>|</span>
+        <a href="tel:<%= coverLetter.phone %>"><%= coverLetter.phone %></a>
+        <span>|</span>
+        <span><%= coverLetter.address %></span>
+      </div>
+    </div>
+
+    <div class="date-line"><%= coverLetter.date %></div>
+    <div class="dear-line"><%= coverLetter.dear %></div>
+
+    <div class="body-content">
+      <% var paragraphs = coverLetter.textArea.split('\n').filter(function(p) { return p.trim() !== ''; }); %>
+      <% paragraphs.forEach(function(p) { %>
+        <p><%= p %></p>
+      <% }); %>
+    </div>
+
+    <% if (coverLetter.socialLinks && coverLetter.socialLinks.length) { %>
+      <div class="social-block">
+        <% coverLetter.socialLinks.forEach(function(link) { %>
+          <a href="<%= link.url %>" target="_blank"><%= link.label || link.url %></a>
+        <% }); %>
+      </div>
+    <% } %>
+
+    <div class="signature">
+      <div class="signature-rule"></div>
+      <div class="signature-name"><%= coverLetter.name %></div>
+    </div>
+  </div>
+</body>
+</html>

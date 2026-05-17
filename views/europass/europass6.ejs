@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { display: flex; justify-content: center; background: #f0ece8; font-family: 'Montserrat', sans-serif; font-weight: 400; color: #1a1a1a; line-height: 1.7; padding: 40px 20px; }
+    .page { width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; box-shadow: 0 4px 24px rgba(0,0,0,0.1); padding: 0; position: relative; }
+    .header-block { background: #dc2626; padding: 35px 55px 25px; color: #fff; }
+    .header-block h1 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 30px; letter-spacing: 1px; }
+    .header-block .subhead { font-size: 11px; text-transform: uppercase; letter-spacing: 5px; font-weight: 300; margin-top: 3px; opacity: 0.85; }
+    .details-row { display: flex; flex-wrap: wrap; gap: 20px 30px; margin-top: 12px; font-size: 12px; font-weight: 300; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 12px; }
+    .details-row .item { display: flex; align-items: center; gap: 5px; }
+    .details-row .item .lbl { font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 10px; opacity: 0.7; }
+    .details-row a { color: #fff; text-decoration: none; }
+    .details-row a:hover { text-decoration: underline; }
+    .social-header { margin-top: 8px; font-size: 11px; }
+    .social-header a { color: #fff; text-decoration: none; margin-right: 12px; font-weight: 300; }
+    .social-header a:hover { text-decoration: underline; }
+    .body-content { padding: 30px 55px 40px; }
+    .date-line { font-size: 13px; color: #888; margin-bottom: 18px; text-align: right; }
+    .dear { font-size: 16px; margin-bottom: 22px; font-weight: 500; color: #333; }
+    .content p { margin-bottom: 14px; text-align: justify; font-size: 13.5px; }
+    .cross-divider { text-align: center; margin: 18px 0; font-size: 14px; color: #dc2626; letter-spacing: 10px; opacity: 0.4; }
+    .signature { margin-top: 40px; padding-top: 20px; }
+    .signature p { font-size: 13px; margin-bottom: 3px; color: #555; }
+    .signature .name { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 18px; color: #dc2626; }
+    .signature .title { font-size: 12px; color: #999; font-weight: 500; }
+    .cross { display: inline-block; line-height: 1; }
+    .footer-stripe { height: 4px; background: #dc2626; }
+    @page { size: A4; margin: 12mm; }
+    @media print { body { background: #fff; padding: 0; } .page { max-width: 100%; box-shadow: none; padding: 20px 30px; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header-block">
+      <h1><%= coverLetter.name %></h1>
+      <div class="subhead">Cover Letter</div>
+      <div class="details-row">
+        <div class="item"><span class="lbl">Address</span> <%= coverLetter.address %></div>
+        <div class="item"><span class="lbl">Email</span> <a href="mailto:<%= coverLetter.email %>"><%= coverLetter.email %></a></div>
+        <div class="item"><span class="lbl">Phone</span> <%= coverLetter.phone %></div>
+      </div>
+      <% if (coverLetter.socialLinks && coverLetter.socialLinks.length) { %>
+        <div class="social-header">
+          <% coverLetter.socialLinks.forEach(function(link) { %>
+            <a href="<%= link %>" target="_blank"><%= link %></a>
+          <% }); %>
+        </div>
+      <% } %>
+    </div>
+
+    <div class="body-content">
+      <div class="date-line"><%= coverLetter.date %></div>
+
+      <div class="dear"><%= coverLetter.dear %>,</div>
+
+      <div class="content">
+        <% var paragraphs = coverLetter.textArea.split('\n').filter(function(p) { return p.trim() !== ''; }); %>
+        <% paragraphs.forEach(function(p) { %>
+          <p><%= p %></p>
+        <% }); %>
+      </div>
+
+      <div class="cross-divider"><span class="cross">&#10013;</span> &#10013; &#10013;</div>
+
+      <div class="signature">
+        <p>Sincerely,</p>
+        <div class="name"><%= coverLetter.name %></div>
+        <div class="title">Applicant</div>
+      </div>
+    </div>
+
+    <div class="footer-stripe"></div>
+  </div>
+</body>
+</html>

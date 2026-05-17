@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #f0fdfa;
+      display: flex;
+      justify-content: center;
+      padding: 48px 24px;
+      font-family: 'Open Sans', -apple-system, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.65;
+      color: #1e293b;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 52px 60px 48px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .header {
+      text-align: center;
+      padding-bottom: 18px;
+      border-bottom: 3px solid #0d9488;
+      margin-bottom: 22px;
+    }
+
+    .name {
+      font-family: 'Poppins', -apple-system, sans-serif;
+      font-size: 21pt;
+      font-weight: 700;
+      color: #0d9488;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2px 0;
+      font-size: 9pt;
+      color: #475569;
+    }
+
+    .contact-row span {
+      padding: 0 10px;
+      border-right: 1px solid #cbd5e1;
+      line-height: 1.4;
+    }
+
+    .contact-row span:last-child {
+      border-right: none;
+    }
+
+    .bar {
+      height: 4px;
+      background: #0d9488;
+      width: 60px;
+      margin: 18px auto 16px;
+      border-radius: 2px;
+    }
+
+    .date-line {
+      font-size: 10pt;
+      margin-bottom: 16px;
+      color: #334155;
+    }
+
+    .dear-line {
+      font-size: 10.5pt;
+      margin-bottom: 16px;
+      font-weight: 600;
+      color: #0d9488;
+    }
+
+    .body-text p {
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+
+    .closing {
+      margin-top: 28px;
+    }
+
+    .closing p {
+      margin-bottom: 2px;
+    }
+
+    .signature {
+      font-family: 'Poppins', -apple-system, sans-serif;
+      font-size: 13pt;
+      font-weight: 600;
+      color: #0d9488;
+      margin-top: 8px;
+    }
+
+    .social-links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 9pt;
+    }
+
+    .social-links a {
+      color: #0d9488;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; padding: 36px 52px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="name"><%= coverLetter.name %></div>
+      <div class="contact-row">
+        <span><%= coverLetter.address %></span>
+        <span><%= coverLetter.email %></span>
+        <span><%= coverLetter.phone %></span>
+        <% if (coverLetter.socialLinks) { %>
+          <span><%= coverLetter.socialLinks %></span>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="bar"></div>
+
+    <div class="date-line"><%= coverLetter.date %></div>
+
+    <div class="dear-line">Dear <%= coverLetter.dear %>,</div>
+
+    <div class="body-text">
+      <% (coverLetter.textArea || '').split('\n').filter(p => p.trim()).forEach(function(paragraph) { %>
+        <p><%= paragraph %></p>
+      <% }); %>
+    </div>
+
+    <div class="closing">
+      <p>Sincerely,</p>
+      <div class="signature"><%= coverLetter.name %></div>
+    </div>
+  </div>
+</body>
+</html>

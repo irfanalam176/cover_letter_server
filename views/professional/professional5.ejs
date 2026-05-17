@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      display: flex;
+      justify-content: center;
+      background: #e8ebee;
+      font-family: 'Source Sans Pro', 'Helvetica Neue', sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.7;
+      color: #334155;
+      padding: 40px 20px;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 50px 60px 50px;
+      box-shadow: 0 4px 30px rgba(51,65,85,0.08);
+      position: relative;
+    }
+    .top-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #334155, #94a3b8, #334155);
+    }
+    .letterhead {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      padding-bottom: 24px;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 28px;
+      margin-top: 10px;
+    }
+    .letterhead-left h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 22pt;
+      font-weight: 900;
+      color: #334155;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+    .letterhead-left .title-line {
+      font-size: 9pt;
+      color: #94a3b8;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin-top: 5px;
+    }
+    .letterhead-right {
+      text-align: right;
+      font-size: 9pt;
+      color: #64748b;
+      line-height: 1.9;
+      font-weight: 400;
+    }
+    .letterhead-right a {
+      color: #334155;
+      text-decoration: none;
+    }
+    .date-line {
+      text-align: left;
+      margin-bottom: 20px;
+      font-size: 10pt;
+      color: #94a3b8;
+      font-weight: 300;
+    }
+    .dear {
+      font-size: 11pt;
+      margin-bottom: 16px;
+      color: #334155;
+      font-weight: 700;
+    }
+    .body-text p {
+      margin-bottom: 14px;
+      text-align: justify;
+      color: #475569;
+    }
+    .body-text p:first-of-type::first-letter {
+      font-family: 'Merriweather', serif;
+      font-size: 34pt;
+      font-weight: 900;
+      color: #334155;
+      float: left;
+      line-height: 0.9;
+      margin-right: 5px;
+      margin-top: 3px;
+    }
+    .signature-block {
+      margin-top: 32px;
+      padding-top: 18px;
+      border-top: 2px solid #e2e8f0;
+      display: flex;
+      align-items: flex-end;
+      gap: 20px;
+    }
+    .signature-left {
+      flex: 0 0 auto;
+    }
+    .signature-line {
+      width: 200px;
+      border-top: 2px solid #334155;
+      margin-bottom: 8px;
+    }
+    .signature-name {
+      font-family: 'Merriweather', serif;
+      font-size: 15pt;
+      font-weight: 700;
+      color: #334155;
+    }
+    .signature-title {
+      font-size: 9pt;
+      color: #94a3b8;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      margin-top: 2px;
+    }
+    .social-links {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 9pt;
+      color: #94a3b8;
+    }
+    .social-links a {
+      color: #334155;
+      text-decoration: none;
+      margin-right: 16px;
+    }
+    .stamp {
+      position: absolute;
+      bottom: 30px;
+      right: 40px;
+      opacity: 0.04;
+      font-family: 'Merriweather', serif;
+      font-size: 60pt;
+      font-weight: 900;
+      color: #334155;
+      pointer-events: none;
+    }
+    @page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { max-width: 100%; box-shadow: none; padding: 40px 50px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="top-bar"></div>
+    <div class="stamp">EXEC</div>
+    <div class="letterhead">
+      <div class="letterhead-left">
+        <h1><%= coverLetter.name %></h1>
+        <div class="title-line">Senior Executive &bull; Corporate Leader</div>
+      </div>
+      <div class="letterhead-right">
+        <div><%= coverLetter.address %></div>
+        <div><%= coverLetter.email %></div>
+        <div><%= coverLetter.phone %></div>
+        <% if (coverLetter.socialLinks) { %>
+          <div><a href="<%= coverLetter.socialLinks %>"><%= coverLetter.socialLinks %></a></div>
+        <% } %>
+      </div>
+    </div>
+    <div class="date-line"><%= coverLetter.date %></div>
+    <div class="dear"><%= coverLetter.dear %></div>
+    <div class="body-text">
+      <% coverLetter.textArea.split('\n').filter(p => p.trim()).forEach(function(paragraph) { %>
+        <p><%= paragraph %></p>
+      <% }); %>
+    </div>
+    <div class="signature-block">
+      <div class="signature-left">
+        <div class="signature-line"></div>
+        <div class="signature-name"><%= coverLetter.name %></div>
+        <div class="signature-title">Executive Leadership</div>
+      </div>
+    </div>
+    <% if (coverLetter.socialLinks) { %>
+      <div class="social-links">
+        <strong>Web:</strong> <a href="<%= coverLetter.socialLinks %>"><%= coverLetter.socialLinks %></a>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #1e293b;
+      color: #e2e8f0;
+      line-height: 1.7;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #0f172a;
+      border-radius: 4px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.04), 0 20px 50px rgba(0,0,0,.5);
+      padding: 48px 56px;
+    }
+    .header {
+      margin-bottom: 36px;
+    }
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 600;
+      color: #db2777;
+      letter-spacing: -.3px;
+      margin-bottom: 6px;
+    }
+    .accent-line {
+      width: 60px;
+      height: 3px;
+      background: #db2777;
+      margin-bottom: 16px;
+      border-radius: 2px;
+    }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    .contact-row a {
+      color: #db2777;
+      text-decoration: none;
+    }
+    .contact-row a:hover { text-decoration: underline; }
+    .social-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .social-links a {
+      font-size: 11px;
+      font-weight: 500;
+      color: #db2777;
+      text-decoration: none;
+      padding: 3px 12px;
+      border: 1px solid #334155;
+      border-radius: 4px;
+      transition: all .2s;
+    }
+    .social-links a:hover {
+      border-color: #db2777;
+      background: rgba(219,39,119,.08);
+    }
+    .date-dear {
+      margin-bottom: 24px;
+    }
+    .date-dear .date {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+    .date-dear .dear {
+      font-size: 15px;
+      font-weight: 600;
+      color: #f1f5f9;
+    }
+    .body-text p {
+      font-size: 14px;
+      line-height: 1.85;
+      color: #cbd5e1;
+      margin-bottom: 14px;
+    }
+    .closing {
+      margin-top: 32px;
+    }
+    .closing .regards {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 2px;
+    }
+    .closing .name-outro {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: #db2777;
+    }
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; background: #fff; padding: 40px 48px; }
+      .body-text p, .contact-row, .date-dear .date { color: #333; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <h1><%= coverLetter.name %></h1>
+      <div class="accent-line"></div>
+      <div class="contact-row">
+        <span><%= coverLetter.address %></span>
+        <span><%= coverLetter.email %></span>
+        <span><%= coverLetter.phone %></span>
+        <% if (coverLetter.socialLinks) { %>
+          <span class="social-links"><%- coverLetter.socialLinks %></span>
+        <% } %>
+      </div>
+    </div>
+    <div class="date-dear">
+      <div class="date"><%= coverLetter.date %></div>
+      <div class="dear"><%= coverLetter.dear %></div>
+    </div>
+    <div class="body-text">
+      <% (coverLetter.textArea || '').split('\n').filter(p => p.trim()).forEach(function(p) { %>
+        <p><%= p %></p>
+      <% }) %>
+    </div>
+    <div class="closing">
+      <div class="regards">Sincerely,</div>
+      <div class="name-outro"><%= coverLetter.name %></div>
+    </div>
+  </div>
+</body>
+</html>

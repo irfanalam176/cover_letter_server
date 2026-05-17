@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800;900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #f5f3ff;
+      display: flex;
+      justify-content: center;
+      padding: 48px 24px;
+      font-family: 'Work Sans', -apple-system, sans-serif;
+      font-size: 10pt;
+      line-height: 1.65;
+      color: #1e293b;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 0;
+      box-shadow: 0 6px 28px rgba(0,0,0,0.06);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .top-bar {
+      height: 8px;
+      background: linear-gradient(90deg, #4c1d95, #7c3aed, #4c1d95);
+    }
+
+    .page-inner {
+      padding: 44px 56px 44px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    .header-left {
+      flex: 1;
+    }
+
+    .name {
+      font-family: 'Barlow', -apple-system, sans-serif;
+      font-size: 22pt;
+      font-weight: 900;
+      color: #4c1d95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .header-right {
+      background: #f5f3ff;
+      padding: 12px 18px;
+      border-radius: 6px;
+      font-size: 8pt;
+      color: #4c1d95;
+      line-height: 1.9;
+      text-align: right;
+      font-weight: 500;
+    }
+
+    .header-right span {
+      display: block;
+    }
+
+    .header-right span:first-child {
+      font-weight: 600;
+    }
+
+    .divider-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 8px 0 20px;
+    }
+
+    .divider-block .line {
+      flex: 1;
+      height: 1px;
+      background: #e9d5ff;
+    }
+
+    .divider-block .dot {
+      width: 8px;
+      height: 8px;
+      background: #4c1d95;
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+
+    .divider-block .line:last-child {
+      flex: 3;
+    }
+
+    .date-line {
+      font-size: 9.5pt;
+      margin-bottom: 14px;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .dear-line {
+      font-size: 10.5pt;
+      margin-bottom: 14px;
+      font-weight: 600;
+      color: #4c1d95;
+    }
+
+    .body-text p {
+      margin-bottom: 12px;
+    }
+
+    .closing {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 2px solid #ede9fe;
+    }
+
+    .closing p {
+      margin-bottom: 3px;
+      font-weight: 500;
+    }
+
+    .signature {
+      font-family: 'Barlow', -apple-system, sans-serif;
+      font-size: 13pt;
+      font-weight: 700;
+      color: #4c1d95;
+      margin-top: 8px;
+    }
+
+    .social-links {
+      margin-top: 10px;
+      display: flex;
+      gap: 14px;
+      font-size: 8.5pt;
+    }
+
+    .social-links a {
+      color: #4c1d95;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 2px 0;
+      border-bottom: 2px solid #ede9fe;
+    }
+
+    .social-links a:hover {
+      border-bottom-color: #4c1d95;
+    }
+
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; }
+      .page-inner { padding: 32px 48px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="top-bar"></div>
+    <div class="page-inner">
+      <div class="header">
+        <div class="header-left">
+          <div class="name"><%= coverLetter.name %></div>
+        </div>
+        <div class="header-right">
+          <span><%= coverLetter.address %></span>
+          <span><%= coverLetter.email %></span>
+          <span><%= coverLetter.phone %></span>
+          <% if (coverLetter.socialLinks) { %>
+            <span><%= coverLetter.socialLinks %></span>
+          <% } %>
+        </div>
+      </div>
+
+      <div class="divider-block">
+        <span class="line"></span>
+        <span class="dot"></span>
+        <span class="line"></span>
+      </div>
+
+      <div class="date-line"><%= coverLetter.date %></div>
+
+      <div class="dear-line">Dear <%= coverLetter.dear %>,</div>
+
+      <div class="body-text">
+        <% (coverLetter.textArea || '').split('\n').filter(p => p.trim()).forEach(function(paragraph) { %>
+          <p><%= paragraph %></p>
+        <% }); %>
+      </div>
+
+      <div class="closing">
+        <p>Sincerely,</p>
+        <div class="signature"><%= coverLetter.name %></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      display: flex;
+      justify-content: center;
+      background: #f0ede8;
+      font-family: 'Lato', 'Georgia', serif;
+      font-size: 11pt;
+      line-height: 1.65;
+      color: #2d2d2d;
+      padding: 40px 20px;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #fff;
+      padding: 60px 65px 50px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+      position: relative;
+    }
+    .page::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #1e3a5f 0%, #c9a84c 50%, #1e3a5f 100%);
+    }
+    .letterhead {
+      text-align: center;
+      padding-bottom: 28px;
+      border-bottom: 2px double #1e3a5f;
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .letterhead h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28pt;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: #1e3a5f;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .letterhead .accent-line {
+      width: 60px;
+      height: 2px;
+      background: #c9a84c;
+      margin: 10px auto;
+    }
+    .letterhead .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 11pt;
+      color: #1e3a5f;
+      letter-spacing: 4px;
+    }
+    .contact-row {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      font-size: 9.5pt;
+      color: #4a4a4a;
+      letter-spacing: 0.5px;
+    }
+    .contact-row span {
+      padding: 0 12px;
+      border-right: 1px solid #c9a84c;
+    }
+    .contact-row span:last-child { border-right: none; }
+    .contact-row a {
+      color: #1e3a5f;
+      text-decoration: none;
+    }
+    .date-line {
+      text-align: right;
+      margin-bottom: 24px;
+      font-size: 10.5pt;
+      color: #555;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+    }
+    .dear {
+      font-size: 11pt;
+      margin-bottom: 18px;
+      color: #1e3a5f;
+      font-weight: 700;
+    }
+    .body-text p {
+      margin-bottom: 14px;
+      text-align: justify;
+      color: #3a3a3a;
+    }
+    .body-text p:first-of-type::first-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36pt;
+      font-weight: 700;
+      color: #1e3a5f;
+      float: left;
+      line-height: 0.9;
+      margin-right: 6px;
+      margin-top: 4px;
+    }
+    .signature-block {
+      margin-top: 36px;
+      padding-top: 10px;
+    }
+    .signature-line {
+      width: 180px;
+      border-top: 2px solid #1e3a5f;
+      margin-bottom: 12px;
+    }
+    .signature-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18pt;
+      font-weight: 600;
+      color: #1e3a5f;
+    }
+    .signature-title {
+      font-size: 10pt;
+      color: #666;
+      margin-top: 2px;
+    }
+    .social-links {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid #e0ddd8;
+      font-size: 9pt;
+      color: #888;
+    }
+    .social-links a {
+      color: #1e3a5f;
+      text-decoration: none;
+      margin-right: 16px;
+      letter-spacing: 0.3px;
+    }
+    .watermark {
+      position: absolute;
+      bottom: 40px;
+      right: 50px;
+      opacity: 0.04;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72pt;
+      color: #1e3a5f;
+      pointer-events: none;
+      letter-spacing: 8px;
+    }
+    @page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { max-width: 100%; box-shadow: none; padding: 40px 55px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="watermark">EXECUTIVE</div>
+    <div class="letterhead">
+      <h1><%= coverLetter.name %></h1>
+      <div class="accent-line"></div>
+      <div class="subtitle">CORPORATE &bull; STRATEGIC &bull; EXECUTIVE</div>
+      <div class="contact-row">
+        <span><%= coverLetter.address %></span>
+        <span><%= coverLetter.email %></span>
+        <span><%= coverLetter.phone %></span>
+        <% if (coverLetter.socialLinks) { %>
+          <span><a href="<%= coverLetter.socialLinks %>"><%= coverLetter.socialLinks %></a></span>
+        <% } %>
+      </div>
+    </div>
+    <div class="date-line"><%= coverLetter.date %></div>
+    <div class="dear"><%= coverLetter.dear %></div>
+    <div class="body-text">
+      <% coverLetter.textArea.split('\n').filter(p => p.trim()).forEach(function(paragraph) { %>
+        <p><%= paragraph %></p>
+      <% }); %>
+    </div>
+    <div class="signature-block">
+      <div class="signature-line"></div>
+      <div class="signature-name"><%= coverLetter.name %></div>
+      <div class="signature-title">Executive Leadership</div>
+    </div>
+    <% if (coverLetter.socialLinks) { %>
+      <div class="social-links">
+        <strong>Connect:</strong> <a href="<%= coverLetter.socialLinks %>"><%= coverLetter.socialLinks %></a>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>

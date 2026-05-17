@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #fffbf5;
+      display: flex;
+      justify-content: center;
+      padding: 48px 24px;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 11pt;
+      line-height: 1.65;
+      color: #292524;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 52px 64px 48px;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.05);
+      border-radius: 2px;
+    }
+
+    .top-borders {
+      margin-bottom: 22px;
+    }
+
+    .top-borders .line1 {
+      height: 3px;
+      background: #78350f;
+      margin-bottom: 4px;
+    }
+
+    .top-borders .line2 {
+      height: 1px;
+      background: #d6d3d1;
+      margin-bottom: 4px;
+    }
+
+    .top-borders .line3 {
+      height: 3px;
+      background: #78350f;
+    }
+
+    .header {
+      margin-bottom: 20px;
+    }
+
+    .name {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 24pt;
+      font-weight: 700;
+      color: #78350f;
+      letter-spacing: 0.03em;
+      margin-bottom: 6px;
+    }
+
+    .contact-line {
+      font-size: 9.5pt;
+      color: #57534e;
+    }
+
+    .contact-line span {
+      display: inline-block;
+    }
+
+    .contact-line span:not(:last-child)::after {
+      content: '  \2014  ';
+      color: #78350f;
+      opacity: 0.5;
+      margin: 0 4px;
+    }
+
+    .divider-wave {
+      text-align: center;
+      font-size: 12pt;
+      color: #78350f;
+      opacity: 0.25;
+      letter-spacing: 6px;
+      margin: 14px 0 18px;
+    }
+
+    .date-line {
+      font-size: 10.5pt;
+      margin-bottom: 16px;
+      color: #57534e;
+    }
+
+    .dear-line {
+      font-size: 11pt;
+      margin-bottom: 14px;
+      font-weight: 600;
+      color: #78350f;
+    }
+
+    .body-text p {
+      margin-bottom: 14px;
+      text-align: justify;
+    }
+
+    .closing {
+      margin-top: 28px;
+    }
+
+    .closing p {
+      margin-bottom: 4px;
+      font-size: 10.5pt;
+    }
+
+    .signature {
+      font-family: 'Pacifico', cursive;
+      font-size: 16pt;
+      font-weight: 400;
+      color: #78350f;
+      margin-top: 6px;
+      padding-top: 10px;
+      border-top: 1px solid #e7e5e4;
+    }
+
+    .social-links {
+      margin-top: 12px;
+      display: flex;
+      gap: 16px;
+      font-size: 9.5pt;
+    }
+
+    .social-links a {
+      color: #78350f;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; padding: 36px 56px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="top-borders">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+
+    <div class="header">
+      <div class="name"><%= coverLetter.name %></div>
+      <div class="contact-line">
+        <span><%= coverLetter.address %></span>
+        <span><%= coverLetter.email %></span>
+        <span><%= coverLetter.phone %></span>
+        <% if (coverLetter.socialLinks) { %>
+          <span><%= coverLetter.socialLinks %></span>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="divider-wave">~ ~ ~ ~ ~</div>
+
+    <div class="date-line"><%= coverLetter.date %></div>
+
+    <div class="dear-line">Dear <%= coverLetter.dear %>,</div>
+
+    <div class="body-text">
+      <% (coverLetter.textArea || '').split('\n').filter(p => p.trim()).forEach(function(paragraph) { %>
+        <p><%= paragraph %></p>
+      <% }); %>
+    </div>
+
+    <div class="closing">
+      <p>Sincerely,</p>
+      <div class="signature"><%= coverLetter.name %></div>
+    </div>
+  </div>
+</body>
+</html>

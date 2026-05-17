@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #fdfbf7;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(162, 28, 175, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(202, 138, 4, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(162, 28, 175, 0.03) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .letter-wrapper {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(4px);
+      padding: 56px 60px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.04), 0 0 0 1px rgba(162, 28, 175, 0.06);
+      border-radius: 4px;
+    }
+    .watercolor-blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(60px);
+      opacity: 0.3;
+    }
+    .blob-1 {
+      width: 280px;
+      height: 280px;
+      background: #a21caf;
+      top: -80px;
+      right: -60px;
+    }
+    .blob-2 {
+      width: 200px;
+      height: 200px;
+      background: #ca8a04;
+      bottom: -40px;
+      left: -40px;
+    }
+    .blob-3 {
+      width: 150px;
+      height: 150px;
+      background: #d946ef;
+      bottom: 30%;
+      right: -30px;
+    }
+    .header-section {
+      text-align: center;
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .header-initial {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(135deg, #a21caf, #ca8a04);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 4px;
+    }
+    .header-name {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 28px;
+      color: #292524;
+      font-weight: 400;
+    }
+    .header-title {
+      font-size: 11px;
+      color: #a8a29e;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-weight: 500;
+      margin-top: 6px;
+    }
+    .contact-flow {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 20px;
+      margin-bottom: 28px;
+      padding: 14px 24px;
+      background: rgba(162, 28, 175, 0.03);
+      border-radius: 40px;
+      border: 1px solid rgba(162, 28, 175, 0.06);
+    }
+    .contact-flow a, .contact-flow span {
+      font-size: 13px;
+      color: #78716c;
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .contact-flow a:hover { color: #a21caf; }
+    .contact-flow .sep {
+      color: #d6d3d1;
+    }
+    .date-line {
+      text-align: center;
+      font-size: 13px;
+      color: #a8a29e;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+    .dear-line {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 20px;
+      font-style: italic;
+      text-align: center;
+      color: #ca8a04;
+      margin-bottom: 28px;
+    }
+    .body-content p {
+      margin-bottom: 18px;
+      font-size: 15px;
+      color: #57534e;
+      font-weight: 400;
+      line-height: 1.8;
+      text-align: justify;
+    }
+    .body-content p:first-of-type {
+      text-align: center;
+      font-size: 16px;
+      color: #44403c;
+      font-weight: 500;
+    }
+    .social-blobs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(162, 28, 175, 0.08);
+    }
+    .social-blobs a {
+      font-size: 12px;
+      color: #78716c;
+      text-decoration: none;
+      padding: 7px 22px;
+      border-radius: 30px;
+      border: 1px solid rgba(162, 28, 175, 0.1);
+      background: rgba(255,255,255,0.6);
+      transition: all 0.3s;
+      letter-spacing: 0.3px;
+    }
+    .social-blobs a:hover {
+      border-color: #a21caf;
+      background: rgba(162, 28, 175, 0.04);
+      color: #a21caf;
+      transform: translateY(-1px);
+    }
+    .signature {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .signature-wave {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 24px;
+      font-style: italic;
+      color: #292524;
+    }
+    .signature-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #a21caf, #ca8a04);
+      margin: 10px auto 8px;
+      border-radius: 1px;
+    }
+    @media (max-width: 768px) {
+      .letter-wrapper { padding: 36px 24px; }
+      .header-initial { font-size: 52px; }
+      .contact-flow { border-radius: 16px; padding: 12px 16px; }
+    }
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { padding: 0; background: #fff; }
+      body::before { display: none; }
+      .letter-wrapper { background: #fff; backdrop-filter: none; box-shadow: none; }
+      .watercolor-blob { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="letter-wrapper">
+    <div class="watercolor-blob blob-1"></div>
+    <div class="watercolor-blob blob-2"></div>
+    <div class="watercolor-blob blob-3"></div>
+
+    <div class="header-section">
+      <div class="header-initial"><%= (coverLetter.name || 'Y')[0] %></div>
+      <div class="header-name"><%= coverLetter.name %></div>
+      <div class="header-title">Cover Letter</div>
+    </div>
+
+    <div class="contact-flow">
+      <a href="mailto:<%= coverLetter.email %>"><%= coverLetter.email %></a>
+      <span class="sep">·</span>
+      <a href="tel:<%= coverLetter.phone %>"><%= coverLetter.phone %></a>
+      <span class="sep">·</span>
+      <span><%= coverLetter.address %></span>
+    </div>
+
+    <div class="date-line"><%= coverLetter.date %></div>
+    <div class="dear-line"><%= coverLetter.dear %></div>
+
+    <div class="body-content">
+      <% var paragraphs = coverLetter.textArea.split('\n').filter(function(p) { return p.trim() !== ''; }); %>
+      <% paragraphs.forEach(function(p) { %>
+        <p><%= p %></p>
+      <% }); %>
+    </div>
+
+    <% if (coverLetter.socialLinks && coverLetter.socialLinks.length) { %>
+      <div class="social-blobs">
+        <% coverLetter.socialLinks.forEach(function(link) { %>
+          <a href="<%= link.url %>" target="_blank"><%= link.label || link.url %></a>
+        <% }); %>
+      </div>
+    <% } %>
+
+    <div class="signature">
+      <div class="signature-divider"></div>
+      <div class="signature-wave"><%= coverLetter.name %></div>
+    </div>
+  </div>
+</body>
+</html>

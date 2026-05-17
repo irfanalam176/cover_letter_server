@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #f5f0eb;
+      color: #292524;
+      line-height: 1.7;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #fdfcfa;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(5,150,105,.06);
+      padding: 48px 56px;
+      position: relative;
+    }
+    .monogram {
+      position: absolute;
+      top: 32px;
+      right: 40px;
+      width: 48px;
+      height: 48px;
+      background: #059669;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0;
+    }
+    .header {
+      margin-bottom: 32px;
+      max-width: 80%;
+    }
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #059669;
+      letter-spacing: -.3px;
+      margin-bottom: 2px;
+    }
+    .header .subtitle {
+      font-size: 13px;
+      font-weight: 400;
+      color: #a8a29e;
+      letter-spacing: 1px;
+    }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+      font-size: 13px;
+      color: #78716c;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #e7e5e4;
+    }
+    .contact-row a {
+      color: #059669;
+      text-decoration: none;
+    }
+    .contact-row a:hover { text-decoration: underline; }
+    .social-links {
+      display: flex;
+      gap: 8px;
+    }
+    .social-links a {
+      font-size: 11px;
+      font-weight: 500;
+      color: #059669;
+      text-decoration: none;
+      padding: 2px 14px;
+      border: 1px solid #d6d3d1;
+      border-radius: 20px;
+      transition: all .2s;
+    }
+    .social-links a:hover {
+      border-color: #059669;
+      background: rgba(5,150,105,.06);
+    }
+    .date-dear {
+      margin-bottom: 24px;
+    }
+    .date-dear .date {
+      font-size: 13px;
+      color: #a8a29e;
+      margin-bottom: 4px;
+    }
+    .date-dear .dear {
+      font-size: 15px;
+      font-weight: 600;
+      color: #292524;
+    }
+    .body-text p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #44403c;
+      margin-bottom: 14px;
+    }
+    .closing {
+      margin-top: 32px;
+    }
+    .closing .regards {
+      font-size: 14px;
+      color: #78716c;
+      margin-bottom: 2px;
+    }
+    .closing .name-outro {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #059669;
+    }
+    .closing .monogram-small {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      background: #059669;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 28px;
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; padding: 40px 48px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="monogram"><%= coverLetter.name ? coverLetter.name.charAt(0).toUpperCase() : 'Y' %></div>
+    <div class="header">
+      <h1><%= coverLetter.name %></h1>
+      <div class="subtitle">Cover Letter</div>
+      <div class="contact-row">
+        <span><%= coverLetter.address %></span>
+        <span><%= coverLetter.email %></span>
+        <span><%= coverLetter.phone %></span>
+        <% if (coverLetter.socialLinks) { %>
+          <span class="social-links"><%- coverLetter.socialLinks %></span>
+        <% } %>
+      </div>
+    </div>
+    <div class="date-dear">
+      <div class="date"><%= coverLetter.date %></div>
+      <div class="dear"><%= coverLetter.dear %></div>
+    </div>
+    <div class="body-text">
+      <% (coverLetter.textArea || '').split('\n').filter(p => p.trim()).forEach(function(p) { %>
+        <p><%= p %></p>
+      <% }) %>
+    </div>
+    <div class="closing">
+      <div class="regards">Sincerely,</div>
+      <div class="name-outro"><%= coverLetter.name %><span class="monogram-small"><%= coverLetter.name ? coverLetter.name.charAt(0).toUpperCase() : 'Y' %></span></div>
+    </div>
+  </div>
+</body>
+</html>

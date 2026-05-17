@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #0f0a1a;
+      color: #e4dff2;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .letter-wrapper {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #1a1230;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(124, 58, 237, 0.12);
+    }
+    .float-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .float-circle.c1 {
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, transparent 70%);
+      top: -120px;
+      right: -80px;
+    }
+    .float-circle.c2 {
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(219, 39, 119, 0.1) 0%, transparent 70%);
+      bottom: -40px;
+      left: -60px;
+    }
+    .float-circle.c3 {
+      width: 120px;
+      height: 120px;
+      border: 1px solid rgba(219, 39, 119, 0.15);
+      top: 40%;
+      left: -30px;
+    }
+    .float-circle.c4 {
+      width: 80px;
+      height: 80px;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      bottom: 20%;
+      right: 40px;
+    }
+    .header-block {
+      padding: 60px 60px 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .header-block::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 60px;
+      right: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.4), rgba(219, 39, 119, 0.4), transparent);
+    }
+    .header-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #7c3aed, #db2777);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+    .header-tag {
+      font-size: 14px;
+      color: rgba(228, 223, 242, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-top: 8px;
+      font-weight: 300;
+    }
+    .asymmetric-layout {
+      display: flex;
+      gap: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .aside-panel {
+      width: 200px;
+      flex-shrink: 0;
+      padding: 32px 0 40px 60px;
+    }
+    .aside-item {
+      margin-bottom: 24px;
+    }
+    .aside-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(228, 223, 242, 0.35);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .aside-value {
+      font-size: 13px;
+      color: rgba(228, 223, 242, 0.8);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+    .aside-value a {
+      color: rgba(228, 223, 242, 0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .aside-value a:hover { color: #db2777; }
+    .main-body {
+      flex: 1;
+      padding: 32px 60px 40px 40px;
+    }
+    .date-line {
+      font-size: 13px;
+      color: rgba(228, 223, 242, 0.4);
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .dear-line {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: #db2777;
+      margin-bottom: 24px;
+    }
+    .main-body p {
+      margin-bottom: 18px;
+      font-size: 14.5px;
+      color: rgba(228, 223, 242, 0.75);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+    .accent-line {
+      display: inline-block;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, #7c3aed, #db2777);
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+    .social-aside {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(228, 223, 242, 0.06);
+    }
+    .social-aside a {
+      display: block;
+      font-size: 12px;
+      color: rgba(228, 223, 242, 0.45);
+      text-decoration: none;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+      text-transform: lowercase;
+    }
+    .social-aside a:hover { color: #db2777; }
+    .signature-area {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(228, 223, 242, 0.06);
+    }
+    .signature-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #7c3aed, #db2777);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .signature-sub {
+      font-size: 12px;
+      color: rgba(228, 223, 242, 0.3);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    @media (max-width: 768px) {
+      .asymmetric-layout { flex-direction: column; }
+      .aside-panel { width: 100%; padding: 24px 28px 0; }
+      .main-body { padding: 20px 28px 40px; }
+      .header-block { padding: 40px 28px 24px; }
+      .header-block::after { left: 28px; right: 28px; }
+      .header-name { font-size: 36px; }
+    }
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; }
+      .letter-wrapper { background: #fff; box-shadow: none; }
+      .header-name { -webkit-text-fill-color: #7c3aed; }
+      .main-body p { color: #292524; }
+    }
+  </style>
+</head>
+<body>
+  <div class="letter-wrapper">
+    <div class="float-circle c1"></div>
+    <div class="float-circle c2"></div>
+    <div class="float-circle c3"></div>
+    <div class="float-circle c4"></div>
+
+    <div class="header-block">
+      <div class="header-name"><%= coverLetter.name %></div>
+      <div class="header-tag">Cover Letter</div>
+    </div>
+
+    <div class="asymmetric-layout">
+      <div class="aside-panel">
+        <div class="aside-item">
+          <div class="aside-label">Email</div>
+          <div class="aside-value"><a href="mailto:<%= coverLetter.email %>"><%= coverLetter.email %></a></div>
+        </div>
+        <div class="aside-item">
+          <div class="aside-label">Phone</div>
+          <div class="aside-value"><a href="tel:<%= coverLetter.phone %>"><%= coverLetter.phone %></a></div>
+        </div>
+        <div class="aside-item">
+          <div class="aside-label">Location</div>
+          <div class="aside-value"><%= coverLetter.address %></div>
+        </div>
+        <% if (coverLetter.socialLinks && coverLetter.socialLinks.length) { %>
+          <div class="social-aside">
+            <% coverLetter.socialLinks.forEach(function(link) { %>
+              <a href="<%= link.url %>" target="_blank">→ <%= link.label || link.url %></a>
+            <% }); %>
+          </div>
+        <% } %>
+      </div>
+
+      <div class="main-body">
+        <div class="date-line"><%= coverLetter.date %></div>
+        <div class="dear-line"><%= coverLetter.dear %></div>
+        <span class="accent-line"></span>
+        <% var paragraphs = coverLetter.textArea.split('\n').filter(function(p) { return p.trim() !== ''; }); %>
+        <% paragraphs.forEach(function(p) { %>
+          <p><%= p %></p>
+        <% }); %>
+        <div class="signature-area">
+          <div class="signature-name"><%= coverLetter.name %></div>
+          <div class="signature-sub">Applicant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

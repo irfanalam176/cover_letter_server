@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      padding: 64px 24px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 10pt;
+      line-height: 1.7;
+      color: #1f2937;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 60px 72px 52px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    }
+
+    .header {
+      margin-bottom: 20px;
+    }
+
+    .name {
+      font-family: 'Raleway', -apple-system, sans-serif;
+      font-size: 18pt;
+      font-weight: 700;
+      color: #4b5563;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px 0;
+      font-size: 8.5pt;
+      color: #6b7280;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+    }
+
+    .contact-row span {
+      padding-right: 14px;
+      margin-right: 14px;
+      border-right: 1px solid #e5e7eb;
+      line-height: 1.5;
+    }
+
+    .contact-row span:last-child {
+      border-right: none;
+      margin-right: 0;
+      padding-right: 0;
+    }
+
+    .hairline {
+      border: none;
+      height: 1px;
+      background: #e5e7eb;
+      margin: 16px 0 20px;
+    }
+
+    .date-line {
+      font-size: 9pt;
+      margin-bottom: 18px;
+      color: #6b7280;
+      font-weight: 300;
+    }
+
+    .dear-line {
+      font-size: 10pt;
+      margin-bottom: 16px;
+      font-weight: 500;
+      color: #4b5563;
+    }
+
+    .body-text p {
+      margin-bottom: 14px;
+      font-weight: 300;
+    }
+
+    .closing {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid #f3f4f6;
+    }
+
+    .closing p {
+      margin-bottom: 3px;
+      font-weight: 300;
+      font-size: 9.5pt;
+    }
+
+    .signature {
+      font-family: 'Raleway', -apple-system, sans-serif;
+      font-size: 11pt;
+      font-weight: 600;
+      color: #4b5563;
+      letter-spacing: 0.04em;
+      margin-top: 8px;
+    }
+
+    .social-links {
+      margin-top: 10px;
+      display: flex;
+      gap: 14px;
+      font-size: 8.5pt;
+      font-weight: 300;
+    }
+
+    .social-links a {
+      color: #4b5563;
+      text-decoration: none;
+      border-bottom: 1px dotted #d1d5db;
+    }
+
+    .social-links a:hover {
+      border-bottom-color: #4b5563;
+    }
+
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; padding: 40px 56px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="name"><%= coverLetter.name %></div>
+      <div class="contact-row">
+        <span><%= coverLetter.address %></span>
+        <span><%= coverLetter.email %></span>
+        <span><%= coverLetter.phone %></span>
+        <% if (coverLetter.socialLinks) { %>
+          <span><%= coverLetter.socialLinks %></span>
+        <% } %>
+      </div>
+    </div>
+
+    <hr class="hairline" />
+
+    <div class="date-line"><%= coverLetter.date %></div>
+
+    <div class="dear-line">Dear <%= coverLetter.dear %>,</div>
+
+    <div class="body-text">
+      <% (coverLetter.textArea || '').split('\n').filter(p => p.trim()).forEach(function(paragraph) { %>
+        <p><%= paragraph %></p>
+      <% }); %>
+    </div>
+
+    <div class="closing">
+      <p>Sincerely,</p>
+      <div class="signature"><%= coverLetter.name %></div>
+    </div>
+  </div>
+</body>
+</html>

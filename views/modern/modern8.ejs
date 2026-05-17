@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: #f5f5f0;
+      color: #1c1917;
+      line-height: 1.7;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #fafaf7;
+      border-radius: 0;
+      padding: 48px 56px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.03);
+      position: relative;
+    }
+    .page::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 100%;
+      background-image: radial-gradient(circle at 20% 30%, rgba(101,163,13,.04) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(101,163,13,.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .header {
+      position: relative;
+      margin-bottom: 40px;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #65a30d;
+      letter-spacing: -.3px;
+      margin-bottom: 4px;
+    }
+    .header .title-line {
+      font-size: 13px;
+      font-weight: 500;
+      color: #a3a38d;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+    .contact-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 0;
+      font-size: 13px;
+      color: #6b6b5c;
+      padding: 12px 0;
+      border-top: 1px solid #e5e5d9;
+      border-bottom: 1px solid #e5e5d9;
+    }
+    .contact-strip > * {
+      flex: 1 1 50%;
+    }
+    .contact-strip a {
+      color: #65a30d;
+      text-decoration: none;
+    }
+    .contact-strip a:hover { text-decoration: underline; }
+    .social-links {
+      display: flex;
+      gap: 8px;
+    }
+    .social-links a {
+      font-size: 11px;
+      font-weight: 600;
+      color: #65a30d;
+      text-decoration: none;
+      padding: 2px 12px;
+      background: #f0f0e8;
+      border-radius: 4px;
+      transition: all .2s;
+    }
+    .social-links a:hover {
+      background: #65a30d;
+      color: #fafaf7;
+    }
+    .date-dear {
+      margin: 24px 0;
+    }
+    .date-dear .date {
+      font-size: 13px;
+      color: #9ca38d;
+      margin-bottom: 4px;
+    }
+    .date-dear .dear {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1c1917;
+    }
+    .body-text p {
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: #44403c;
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .closing {
+      margin-top: 32px;
+      position: relative;
+    }
+    .closing .regards {
+      font-size: 14px;
+      color: #78776c;
+      margin-bottom: 2px;
+    }
+    .closing .name-outro {
+      font-size: 18px;
+      font-weight: 700;
+      color: #65a30d;
+    }
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; padding: 40px 48px; }
+      .page::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <h1><%= coverLetter.name %></h1>
+      <div class="title-line">Cover Letter</div>
+      <div class="contact-strip">
+        <span><%= coverLetter.address %></span>
+        <span><%= coverLetter.email %></span>
+        <span><%= coverLetter.phone %></span>
+        <% if (coverLetter.socialLinks) { %>
+          <span class="social-links"><%- coverLetter.socialLinks %></span>
+        <% } %>
+      </div>
+    </div>
+    <div class="date-dear">
+      <div class="date"><%= coverLetter.date %></div>
+      <div class="dear"><%= coverLetter.dear %></div>
+    </div>
+    <div class="body-text">
+      <% (coverLetter.textArea || '').split('\n').filter(p => p.trim()).forEach(function(p) { %>
+        <p><%= p %></p>
+      <% }) %>
+    </div>
+    <div class="closing">
+      <div class="regards">Sincerely,</div>
+      <div class="name-outro"><%= coverLetter.name %></div>
+    </div>
+  </div>
+</body>
+</html>

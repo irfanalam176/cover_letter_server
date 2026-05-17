@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #eff6ff;
+      display: flex;
+      justify-content: center;
+      padding: 48px 24px;
+      font-family: 'Roboto', -apple-system, sans-serif;
+      font-size: 10pt;
+      line-height: 1.65;
+      color: #1e293b;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 44px 56px 44px;
+      box-shadow: 0 6px 28px rgba(0,0,0,0.04);
+      border-radius: 6px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 8px;
+      padding-bottom: 14px;
+      border-bottom: 3px solid #1e40af;
+    }
+
+    .name {
+      font-family: 'Montserrat', -apple-system, sans-serif;
+      font-size: 20pt;
+      font-weight: 800;
+      color: #1e40af;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .contact-right {
+      text-align: right;
+      font-size: 8.5pt;
+      color: #475569;
+      line-height: 1.9;
+    }
+
+    .contact-right span {
+      display: block;
+    }
+
+    .accent-line {
+      height: 2px;
+      background: #bfdbfe;
+      margin-bottom: 18px;
+    }
+
+    .date-line {
+      font-size: 9.5pt;
+      margin-bottom: 16px;
+      color: #475569;
+    }
+
+    .dear-line {
+      font-size: 10.5pt;
+      margin-bottom: 14px;
+      font-weight: 500;
+      color: #1e40af;
+    }
+
+    .body-text p {
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+
+    .body-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .closing {
+      margin-top: 30px;
+      padding-top: 16px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .closing p {
+      margin-bottom: 3px;
+      font-size: 9.5pt;
+    }
+
+    .signature {
+      font-family: 'Montserrat', -apple-system, sans-serif;
+      font-size: 12pt;
+      font-weight: 700;
+      color: #1e40af;
+      margin-top: 8px;
+    }
+
+    .social-links {
+      margin-top: 8px;
+      display: flex;
+      gap: 14px;
+      font-size: 8.5pt;
+    }
+
+    .social-links a {
+      color: #1e40af;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; padding: 32px 48px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="name"><%= coverLetter.name %></div>
+      <div class="contact-right">
+        <span><%= coverLetter.address %></span>
+        <span><%= coverLetter.email %></span>
+        <span><%= coverLetter.phone %></span>
+        <% if (coverLetter.socialLinks) { %>
+          <span><%= coverLetter.socialLinks %></span>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="accent-line"></div>
+
+    <div class="date-line"><%= coverLetter.date %></div>
+
+    <div class="dear-line">Dear <%= coverLetter.dear %>,</div>
+
+    <div class="body-text">
+      <% (coverLetter.textArea || '').split('\n').filter(p => p.trim()).forEach(function(paragraph) { %>
+        <p><%= paragraph %></p>
+      <% }); %>
+    </div>
+
+    <div class="closing">
+      <p>Sincerely,</p>
+      <div class="signature"><%= coverLetter.name %></div>
+    </div>
+
+    <% if (coverLetter.socialLinks) { %>
+      <div class="social-links">
+        <span><%= coverLetter.socialLinks %></span>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>

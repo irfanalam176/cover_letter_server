@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@200;400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Martian Mono', monospace;
+      background: #0c1b1d;
+      color: #cbd5e1;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .letter-wrapper {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #0f2027;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    }
+    .monogram-hero {
+      background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+      padding: 50px 60px 40px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      position: relative;
+    }
+    .monogram-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(234, 88, 12, 0.5), transparent);
+    }
+    .monogram-circle {
+      width: 90px;
+      height: 90px;
+      border: 3px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .monogram-circle::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border: 1px solid rgba(234, 88, 12, 0.4);
+      border-radius: 50%;
+    }
+    .hero-text {
+      flex: 1;
+    }
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .hero-tagline {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 6px;
+      font-weight: 200;
+    }
+    .body-content {
+      padding: 40px 60px 50px;
+    }
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 24px;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(203, 213, 225, 0.6);
+      letter-spacing: 0.3px;
+    }
+    .contact-chip a {
+      color: rgba(203, 213, 225, 0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-chip a:hover { color: #ea580c; }
+    .chip-dot {
+      width: 4px;
+      height: 4px;
+      background: #ea580c;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .date-line {
+      font-size: 12px;
+      color: rgba(203, 213, 225, 0.4);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      font-weight: 200;
+    }
+    .dear-line {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #0891b2;
+      margin-bottom: 24px;
+    }
+    .body-content p {
+      margin-bottom: 18px;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(203, 213, 225, 0.75);
+    }
+    .body-content p:first-of-type {
+      border-left: 2px solid #ea580c;
+      padding-left: 18px;
+    }
+    .social-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .social-bar a {
+      font-size: 11px;
+      color: rgba(203, 213, 225, 0.4);
+      text-decoration: none;
+      padding: 5px 14px;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 2px;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+      font-weight: 200;
+    }
+    .social-bar a:hover {
+      border-color: #ea580c;
+      color: #ea580c;
+    }
+    .signature-block {
+      margin-top: 36px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .signature-line {
+      width: 60px;
+      height: 2px;
+      background: #ea580c;
+    }
+    .signature-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+    @media (max-width: 768px) {
+      .monogram-hero { padding: 32px 28px; flex-direction: column; text-align: center; }
+      .body-content { padding: 28px 24px 36px; }
+      .hero-name { font-size: 28px; }
+    }
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; color: #292524; }
+      .letter-wrapper { background: #fff; box-shadow: none; }
+      .monogram-hero { background: #0891b2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .body-content p { color: #444; }
+    }
+  </style>
+</head>
+<body>
+  <div class="letter-wrapper">
+    <div class="monogram-hero">
+      <div class="monogram-circle"><%= (coverLetter.name || 'Y')[0] %></div>
+      <div class="hero-text">
+        <div class="hero-name"><%= coverLetter.name %></div>
+        <div class="hero-tagline">Cover Letter</div>
+      </div>
+    </div>
+    <div class="body-content">
+      <div class="contact-bar">
+        <span class="contact-chip">
+          <span class="chip-dot"></span>
+          <a href="mailto:<%= coverLetter.email %>"><%= coverLetter.email %></a>
+        </span>
+        <span class="contact-chip">
+          <span class="chip-dot"></span>
+          <a href="tel:<%= coverLetter.phone %>"><%= coverLetter.phone %></a>
+        </span>
+        <span class="contact-chip">
+          <span class="chip-dot"></span>
+          <span><%= coverLetter.address %></span>
+        </span>
+      </div>
+      <div class="date-line"><%= coverLetter.date %></div>
+      <div class="dear-line"><%= coverLetter.dear %></div>
+      <% var paragraphs = coverLetter.textArea.split('\n').filter(function(p) { return p.trim() !== ''; }); %>
+      <% paragraphs.forEach(function(p) { %>
+        <p><%= p %></p>
+      <% }); %>
+      <% if (coverLetter.socialLinks && coverLetter.socialLinks.length) { %>
+        <div class="social-bar">
+          <% coverLetter.socialLinks.forEach(function(link) { %>
+            <a href="<%= link.url %>" target="_blank">[ <%= link.label || link.url %> ]</a>
+          <% }); %>
+        </div>
+      <% } %>
+      <div class="signature-block">
+        <div class="signature-line"></div>
+        <div class="signature-name"><%= coverLetter.name %></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

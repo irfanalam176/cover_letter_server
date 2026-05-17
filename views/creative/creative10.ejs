@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f6f5f0;
+      color: #1c1917;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .letter-wrapper {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #fffdf8;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.04);
+      padding: 0;
+    }
+    .ornate-top {
+      height: 10px;
+      background: linear-gradient(90deg, #0c4a6e, #b8954e, #0c4a6e);
+      position: relative;
+    }
+    .ornate-top::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, rgba(184, 149, 78, 0.3), transparent);
+    }
+    .ornate-bottom {
+      height: 10px;
+      background: linear-gradient(90deg, #b8954e, #0c4a6e, #b8954e);
+      position: relative;
+    }
+    .ornate-bottom::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, rgba(184, 149, 78, 0.3), transparent);
+    }
+    .letter-inner {
+      padding: 48px 60px 44px;
+    }
+    .header-filigree {
+      text-align: center;
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .header-filigree .ornament {
+      color: #b8954e;
+      font-size: 20px;
+      letter-spacing: 12px;
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 300;
+    }
+    .header-filigree .ornament-bottom {
+      color: #b8954e;
+      font-size: 20px;
+      letter-spacing: 12px;
+      display: block;
+      margin-top: 8px;
+      font-weight: 300;
+    }
+    .header-name {
+      font-family: 'Marcellus', serif;
+      font-size: 40px;
+      color: #0c4a6e;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+    .header-title {
+      font-family: 'Marcellus SC', serif;
+      font-size: 11px;
+      color: #b8954e;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      margin-top: 8px;
+      font-weight: 400;
+    }
+    .contact-gold {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 28px;
+      margin-bottom: 32px;
+      padding: 12px 0;
+      border-top: 1px solid rgba(184, 149, 78, 0.15);
+      border-bottom: 1px solid rgba(184, 149, 78, 0.15);
+    }
+    .contact-gold a, .contact-gold span {
+      font-size: 12px;
+      color: #78716c;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+    .contact-gold a:hover { color: #b8954e; }
+    .contact-gold .sep-gold {
+      color: #b8954e;
+      opacity: 0.4;
+    }
+    .date-line {
+      text-align: center;
+      font-size: 12px;
+      color: #a8a29e;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .dear-line {
+      font-family: 'Marcellus', serif;
+      font-size: 20px;
+      text-align: center;
+      color: #0c4a6e;
+      margin-bottom: 24px;
+    }
+    .body-content p {
+      margin-bottom: 18px;
+      font-size: 14.5px;
+      color: #57534e;
+      font-weight: 300;
+      line-height: 1.85;
+      text-align: justify;
+    }
+    .body-content p:first-of-type {
+      position: relative;
+      padding-top: 4px;
+    }
+    .body-content p:first-of-type::before {
+      content: '\275D';
+      font-family: 'Marcellus', serif;
+      font-size: 36px;
+      color: #b8954e;
+      opacity: 0.4;
+      float: left;
+      line-height: 0.7;
+      margin-right: 10px;
+      margin-top: 2px;
+    }
+    .social-gold {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(184, 149, 78, 0.15);
+    }
+    .social-gold a {
+      font-size: 11px;
+      color: #78716c;
+      text-decoration: none;
+      padding: 6px 20px;
+      border: 1px solid rgba(184, 149, 78, 0.15);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: all 0.3s;
+    }
+    .social-gold a:hover {
+      border-color: #b8954e;
+      color: #b8954e;
+    }
+    .signature-crown {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .signature-crown .crown-icon {
+      color: #b8954e;
+      font-size: 18px;
+      letter-spacing: 6px;
+    }
+    .signature-crown .sig-name {
+      font-family: 'Marcellus', serif;
+      font-size: 26px;
+      color: #0c4a6e;
+      letter-spacing: 3px;
+      margin-top: 6px;
+    }
+    @media (max-width: 768px) {
+      .letter-inner { padding: 32px 24px; }
+      .header-name { font-size: 30px; letter-spacing: 2px; }
+      .header-filigree .ornament { font-size: 16px; letter-spacing: 8px; }
+      .contact-gold { gap: 6px 16px; }
+    }
+@page { size: A4; margin: 12mm; }
+    @media print {
+      body { padding: 0; background: #fff; }
+      .letter-wrapper { box-shadow: none; background: #fff; }
+      .ornate-top, .ornate-bottom { background: #0c4a6e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="letter-wrapper">
+    <div class="ornate-top"></div>
+    <div class="letter-inner">
+      <div class="header-filigree">
+        <span class="ornament">✦ ❋ ✦</span>
+        <div class="header-name"><%= coverLetter.name %></div>
+        <div class="header-title">Cover Letter</div>
+        <span class="ornament-bottom">✦ ❋ ✦</span>
+      </div>
+
+      <div class="contact-gold">
+        <a href="mailto:<%= coverLetter.email %>"><%= coverLetter.email %></a>
+        <span class="sep-gold">◆</span>
+        <a href="tel:<%= coverLetter.phone %>"><%= coverLetter.phone %></a>
+        <span class="sep-gold">◆</span>
+        <span><%= coverLetter.address %></span>
+      </div>
+
+      <div class="date-line"><%= coverLetter.date %></div>
+      <div class="dear-line"><%= coverLetter.dear %></div>
+
+      <div class="body-content">
+        <% var paragraphs = coverLetter.textArea.split('\n').filter(function(p) { return p.trim() !== ''; }); %>
+        <% paragraphs.forEach(function(p) { %>
+          <p><%= p %></p>
+        <% }); %>
+      </div>
+
+      <% if (coverLetter.socialLinks && coverLetter.socialLinks.length) { %>
+        <div class="social-gold">
+          <% coverLetter.socialLinks.forEach(function(link) { %>
+            <a href="<%= link.url %>" target="_blank"><%= link.label || link.url %></a>
+          <% }); %>
+        </div>
+      <% } %>
+
+      <div class="signature-crown">
+        <div class="crown-icon">✦ ✦ ✦</div>
+        <div class="sig-name"><%= coverLetter.name %></div>
+      </div>
+    </div>
+    <div class="ornate-bottom"></div>
+  </div>
+</body>
+</html>
